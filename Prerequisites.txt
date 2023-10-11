@@ -1,0 +1,3 @@
+Jupyter Notebook
+pip install pandas
+pip install sqlite3
