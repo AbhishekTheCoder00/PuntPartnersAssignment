@@ -1,0 +1,23 @@
+1. What was the total sales amount for each product in the last quarter (last 3 months)?
+query1:
+SELECT product, SUM(total_sales) as total_sales
+FROM product_sales
+WHERE order_year = (SELECT MAX(order_year) FROM product_sales)
+AND order_month >= (SELECT MAX(order_month) FROM product_sales) - 2
+GROUP BY product;
+
+
+2. List the top 5 products by total sales amount for the entire dataset.
+query2:
+SELECT product, SUM(total_sales) as total_sales
+FROM product_sales
+GROUP BY product
+ORDER BY total_sales DESC
+LIMIT 5;
+
+
+3. Calculate the monthly average sales for each product over the entire dataset.
+query3:
+SELECT product, AVG(total_sales) as avg_sales
+FROM product_sales
+GROUP BY product;
